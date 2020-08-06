@@ -1,0 +1,34 @@
+Server Statistics
+1. Determine Individual Games
+    a) Map/GameMode Changes
+    b) Create Game Object
+        - Map
+        - Gamemode
+        - Begin
+        - End
+        - Date
+        - Average Player Count
+        - Average Queue Count
+2. Player Tracking
+    a) Carried over from Previous Game
+    b) Joining/Leaving from Server
+    c) Server Queue
+3. Statistical Analysis
+    a) Determine Acceptable Time Frame for Server Analysis
+    b) Graph by Date & Time
+    c) Graph by Map
+    d) Graph by Gamemode
+
+
+Player Statistics
+1. Player Object per Game (Sub Vector of Game)
+    - Name
+    - Damage by Weapon
+    - Damage by Victim Type
+    - Total Damage
+    - Kills
+    - Deaths
+    - Roles
+2. Damage Tracking
+3. Kill Tracking
+4. Death Tracking

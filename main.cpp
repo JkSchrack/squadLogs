@@ -1,6 +1,7 @@
 //
 // Created by Justin on 2020-07-30.
 //
+#include <typeinfo>
 #include <string>
 #include <vector>
 #include <iostream>
@@ -9,15 +10,17 @@ using namespace std;
 
 int main() {
     vector< vector<string> > logMessageVector;
+    vector< vector<string> > gameVector;
     string line;
-    ifstream file("c:/Users/Justin/Downloads/Squad/SquadGame-backup-2020.07.25-09.37.31.log");
+    string logFilename = "c:/Users/Justin/Downloads/Squad/SquadGame-backup-2020.07.25-09.37.31.log";
+    ifstream logFile(logFilename);
 
-    if (!file){
-        cout << "Failed to find File!\n";
+    if (!logFile){
+        cout << "Failed to find " << logFilename << "\n";
     }
     int test = 0;
     int count = 0;
-    while (getline (file, line) ) {
+    while (getline (logFile, line) ) {
         count++;
         if (line[0] == '[') {
             test++;
@@ -31,6 +34,7 @@ int main() {
             int logNumber = 0;
             int logMessage = 0;
             int logValue = 0;
+            int logGameMode = 0;
             for (int i = 0; i < line.length(); i++) {
                 if (line[i] == ']' && logTime == 0) { //logTime
                     end = i;
@@ -52,8 +56,42 @@ int main() {
                         info[3] += line[n];
                     }
                     logMessage = 1;
-                } else if (line[i] == ':' && logTime == 1 && logNumber == 1 && logMessage == 1 &&
-                           logValue == 0) { //LogValue
+                } else if ( info[3] == "LogGameMode" && logGameMode == 0 && line[i] == ':' && logTime == 1 && logNumber == 1 && logMessage == 1 && logValue == 0) { // Read a LogGameMode Message
+                    //cout << "LogGameMode Detected \n";
+                    string mapTestCheck;
+                    for (int n = end + 2; n < i; n++) {
+                        mapTestCheck += line[n];
+                    }
+                    int slashCount = 0;
+                    int mapNameCheck = 0;
+                    string mapName;
+                    //cout << mapTestCheck << "\n";
+                    //cout << typeid(mapTestCheck).name() << "\n";
+                    if (mapTestCheck == "ProcessServerTravel") {
+                        //cout << "Map Change Detected \n";
+
+                        int endOfMapName;
+                        for (int n = line.length() - 1; n > end + 1; n--){
+                            if (line[n] == '/') {
+                                endOfMapName = n;
+                                n = 0;
+                            }
+                        }
+                        for (int j = endOfMapName + 1; j < line.length() - 1; j++) {
+                            mapName += line[j];
+                        }
+                        mapNameCheck = 1;
+
+                        string tempMap;
+                        tempMap = mapName + " " + info[1];
+                        vector<string> tempVector;
+                        tempVector.push_back(tempMap);
+                        gameVector.push_back(tempVector);
+                        logGameMode = 1;
+                    }
+
+
+                } else if (line[i] == ':' && logTime == 1 && logNumber == 1 && logMessage == 1 && logValue == 0) { //LogValue
                     begin = end + 1;
                     end = line.length() - 1;
                     for (int n = begin; n < end; n++) {
@@ -61,11 +99,13 @@ int main() {
                     }
                     logValue = 1;
                 }
+
             }
             info[5] = line;
 
+            /*
             int check = 0;
-            if (!logMessageVector.empty()) {
+            if (!logMessageVector.empty()) { // Add Log Message to logMessageVector
                 for (int i = 0; i < logMessageVector.size(); i++) {
                     if (logMessageVector[i][0] == info[3]) {
                         logMessageVector[i].push_back(info[5]);
@@ -73,14 +113,13 @@ int main() {
                     }
                 }
             }
-            if (check == 0) {
+            if (check == 0) { // Add a new logMessage to logMessageVector
                 vector<string> tempVector;
                 tempVector.push_back(info[3]);
                 tempVector.push_back(info[5]);
                 logMessageVector.push_back(tempVector);
             }
 
-            /*
             if (stoi(info[0]) > 400 && stoi(info[0]) < 450) {
                 cout << info[5] << "\n";
                 cout << "Line: " << info[0] << " ";
@@ -90,7 +129,7 @@ int main() {
                 cout << "logValue: " << info[4] << " ";
                 cout << "\n";
             }
-             */
+            */
         }
 
         /*
@@ -104,18 +143,29 @@ int main() {
 
         cout << to_string(logMessageVector.size());
         cout << "\n";
-         */
 
+        */
     }
 
+    /*
     for (int i=0;i<logMessageVector.size();i++) {
-        string filename = "SQUAD_" + logMessageVector[i][0] + ".txt";
+        string filename = "c:/Users/Justin/Downloads/Squad/SquadLogs/SQUAD_" + logMessageVector[i][0] + ".txt";
         ofstream eachFile(filename);
-        for (int n=0;n<logMessageVector[i].size();n++) {
+        for (int n = 0; n < logMessageVector[i].size(); n++) {
             eachFile << logMessageVector[i][n] << "\n";
             //cout << logMessageVector[i][n] << "\n";
         }
     }
+    */
 
-    file.close();
+    for (int i=0; i<gameVector.size();i++) {
+        cout << gameVector[i][0] << "\n";
+    }
+
+
+
+    logFile.close();
+
+    //Server Statistics
+
 }

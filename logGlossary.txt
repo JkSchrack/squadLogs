@@ -1,0 +1,69 @@
+Glossary of Squad Server Logs
+    Sources: Bella's Battleground Log File for 2020.07.25-09.37.31
+
+    :: Indicates Single Line in File
+    -- Player Statistics
+    == Server Statistics
+
+1. .txt::                               Max FPS?
+2. Blueprint.txt:                       DrawMaterial Rendering
+3. JoystickPluginLog.txt:               Joystick Plugin
+4. LogActor.txt:                        Out of Bounds Log
+5. LogAIModule.txt:                     AIModule Log
+6. LogAssetRegistry.txt:                AssetRegistry Loading Time
+== 7. LogBeacon.txt:                    Network HandShake with Steam 64ID
+8. LogCollision.txt::                   Collision Error
+9. LogConfig.txt:                       Server Parameters/Configuration
+10. LogConsoleManager.txt::             ConsoleManager Log
+11. LogCore.txt:                        Code Errors?
+12. LogEasyAntiCheatClient.txt::        EAC Initialization
+== 13. LogEasyAntiCheatServer.txt:      EAC Player Queue, Joining and Leaving
+14. LogEngine.txt::                     Game Engine Initialization?
+15. LogExit.txt:                        Steam Connection Issues?
+== 16. LogGameMode.txt:                 Map Change, Game State & Player Spawning?
+17. LogGameplayTags.txt:                Player Clan Tag Logs
+18. LogGameState.txt:                   Game State (In-Progress, Post-Game, Prior-Game)
+19. LogHAL.txt::                        Server Display Stats?
+20. LogInit.txt:                        Server Hosting Machine Specifications
+21. LogLoad.txt:                        Gamemode Rotation & Execution
+22. LogMemory.txt:                      Server Hosting Machine Memory Management
+23. LogModdingRuntimeModule.txt:        Modded Gamemode Execution
+== 24. LogNet.txt: Server/Player        Connection & Map Changes
+25. LogNetPackageMap.txt: Server        Object Loading
+26. LogNetPlayerMovements.txt::         Admin Movement Error?
+27. LogNetSerialization.txt:            Serialization Errors
+28. LogNetTraffic.txt:                  Network Traffic Issues
+29. LogNetVersion.txt:                  Server Game Version Check
+== 30. LogOnline.txt:                   Player Connectivity
+31. LogOnlineGame.txt:                  Player Kicking
+== 32. LogOnlineSession.txt:            Public/Private Queue & Server Settings
+33. LogOutputDevice.txt:                Server Crashing?
+34. LogPackageLocalizationCache.txt:    Processing of Package Paths
+35. LogPakFile.txt:                     Pak File Rendering
+36. LogPhysics.txt:                     Collisions with Landscape?
+37. LogProperty.txt:                    DistanceRotation Errors?
+38. LogRCONServer.txt:                  RCON Server Connections
+39. LogRHI.txt:                         Server Command Error?
+40. LogScript.txt:                      Vehicle Seating Logs?
+41. LogSecurity.txt:                    Packet Errors
+== 42. LogSQMove.txt:                   Transferring Players to New Map?
+-- 43. LogSquad.txt:                    Player Damage/Weapon, Vehicle Destruction
+-- 44. LogSquadScorePoints.txt:         Player Score Changes/Cause
+-- 45. LogSquadTrace.txt:               Player Kill/Death, Role Changes, Vehicle Damage, ***Wrong Damage
+46. LogSquadVoice.txt:                  Voice Channel Connection Logs
+47. LogStats.txt:                       Server FlushLevelStreaming Process Times
+48. LogStreaming.txt:                   Server Flushing Logs
+49. LogTemp.txt:                        FireProjectile() Unable to Fire Logs
+50. LogTextFormatter.txt:               Player Interaction Error Logs
+51. LogTextLocalizationManager.txt::    Localization Data Time
+52: LogTextLocalizationResource.txt:    Localization Loading Logs
+53. LogUObjectAllocator.txt::           Allocation of Bytes
+54. LogUObjectArray.txt:                Array Allocation
+55. LogUObjectBase.txt:                 Invalid Object Pointer Logs
+56. LogUObjectHash.txt:                 Hash Table Processing Time Logs
+57. LogWindows.txt::                    Windows Server Features
+58. LogWorld.txt:                       Map Processing Information
+59. PacketHandlerLog.txt:               PacketHandler Logs
+60. PIE.txt:                            IED Aborting?
+61. SQLogJoinBeaconClient.txt:          Remote Server Connection Failure
+
