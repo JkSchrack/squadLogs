@@ -9,3 +9,4 @@ Program performs four operations to help decipher information from Squad Server 
 
 Input: Use Absolute File Paths for all requested Files or Folders.
 Output: Text Files or Metrics via the Terminal
+
